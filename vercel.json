@@ -11,6 +11,18 @@
         {
             "source": "/news",
             "destination": "/api/news"
+        },
+        {
+            "source": "/",
+            "destination": "/api/"
+        },
+        {
+            "source": "/events",
+            "destination": "/api/events"
+        },
+        {
+            "source": "/organizations",
+            "destination": "/api/organizations"
         }
     ]
 }
