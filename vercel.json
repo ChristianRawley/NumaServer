@@ -1,0 +1,16 @@
+{
+    "rewrites": [
+        {
+            "source": "/dining",
+            "destination": "/api/dining"
+        },
+        {
+            "source": "/calendar",
+            "destination": "/api/calendar"
+        },
+        {
+            "source": "/news",
+            "destination": "/api/news"
+        }
+    ]
+}
