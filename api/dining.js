@@ -1,5 +1,3 @@
-const fetch = require("node-fetch");
-
 const SITE_ID = "5ed1791f1ca48e085a7b9a4d";
 const LOCATION_ID = "5f4936c257e0d8184670a220";
 
@@ -20,6 +18,9 @@ const FETCH_HEADERS = {
 };
 
 async function fetchJson(url) {
+  // Dynamically import node-fetch
+  const fetch = (await import("node-fetch")).default;
+
   const res = await fetch(url, { headers: FETCH_HEADERS });
   const text = await res.text();
 
