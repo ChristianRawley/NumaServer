@@ -46,7 +46,8 @@ function simplifyMenu(menu) {
 
 module.exports = async function handler(req, res) {
   try {
-    const date = new Date().toISOString().split("T")[0];
+    //const date = new Date().toISOString().split("T")[0];
+      const date = "2025-12-12";
 
     const statusData = await fetchJson(
       `https://apiv4.dineoncampus.com/locations/status_by_site?siteId=${SITE_ID}`
