@@ -1,0 +1,8 @@
+Aggregations:
+- Course descriptions + specific course information
+
+Some other time?
+- Hours and services
+- Sports
+- Faculty directory
+- Programs (majors, minors, etc) + requirements
