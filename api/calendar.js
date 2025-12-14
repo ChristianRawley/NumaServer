@@ -1,11 +1,11 @@
-import axios from "axios";
-import * as cheerio from "cheerio";
-import https from "https";
+const axios = require("axios");
+const cheerio = require("cheerio");
+const https = require("https");
 
 const httpsAgent = new https.Agent({ rejectUnauthorized: false });
 axios.defaults.httpsAgent = httpsAgent;
 
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
   try {
     const { data } = await axios.get(
       "https://uafs.edu/academics/academic-guidance/registrar/calendar/index.php"
@@ -43,4 +43,4 @@ export default async function handler(req, res) {
     console.error(error);
     res.status(500).json({ error: "Failed to fetch calendar" });
   }
-}
+};
