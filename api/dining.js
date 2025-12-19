@@ -24,7 +24,7 @@ async function fetchJson(url) {
 	console.log("URL:", url);
 	console.log("Status:", res.status);
 	console.log("Content-Type:", res.headers.get("content-type"));
-	console.log("Body snippet:", text.slice(0, 200));
+	console.log("Body snippet:", text);
 	try {
 		return JSON.parse(text);
 	} catch {
