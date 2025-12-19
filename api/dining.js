@@ -1,6 +1,6 @@
-import axios from "axios";
-import { CookieJar } from "tough-cookie";
-import { wrapper } from "axios-cookiejar-support";
+const axios = require("axios");
+const { CookieJar } = require("tough-cookie");
+const { wrapper } = require("axios-cookiejar-support");
 
 /* =======================
    CONSTANTS
@@ -57,7 +57,6 @@ async function fetchJson(url) {
     const res = await client.get(url);
     return res.data;
   } catch (err) {
-    // Retry once (Cloudflare often sets cookies on first hit)
     if (!err.__retried) {
       err.__retried = true;
       return fetchJson(url);
@@ -82,16 +81,15 @@ function simplifyMenu(menu) {
    API HANDLER
 ======================= */
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   try {
     const now = Date.now();
 
-    // Serve from cache if fresh
     if (cache.data && now - cache.timestamp < CACHE_TTL) {
       return res.status(200).json(cache.data);
     }
 
-    const date = "2025-12-12"; // or new Date().toISOString().split("T")[0]
+    const date = "2025-12-12";
 
     const statusData = await fetchJson(
       `https://apiv4.dineoncampus.com/locations/status_by_site?siteId=${SITE_ID}`
@@ -130,4 +128,4 @@ export default async function handler(req, res) {
     console.error("Dining API error:", err?.response?.status || err);
     res.status(500).json({ error: "Failed to fetch dining data" });
   }
-}
+};
