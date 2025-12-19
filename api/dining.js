@@ -21,6 +21,10 @@ async function fetchJson(url) {
 	const fetch = (await import("node-fetch")).default;
 	const res = await fetch(url, { headers: FETCH_HEADERS });
 	const text = await res.text();
+	console.log("URL:", url);
+	console.log("Status:", res.status);
+	console.log("Content-Type:", res.headers.get("content-type"));
+	console.log("Body snippet:", text.slice(0, 200));
 	try {
 		return JSON.parse(text);
 	} catch {
@@ -76,8 +80,4 @@ module.exports = async function handler(req, res) {
 		console.error("Dining API error:", err);
 		res.status(500).json({ error: "Failed to fetch dining data" });
 	}
-	console.log("URL:", url);
-	console.log("Status:", res.status);
-	console.log("Content-Type:", res.headers.get("content-type"));
-	console.log("Body snippet:", text.slice(0, 200));
 };
